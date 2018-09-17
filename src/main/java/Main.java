@@ -8,7 +8,6 @@ public class Main {
         StringBuilder builder = new StringBuilder();
         InputReader inputReader = new InputReader();
         Person p = inputReader.readPersonInformation();
-        /*int destinyNumber =
-        inputReader.readFromFile(builder, destinyNumber);*/
+        inputReader.readFromFile(builder, p.getDestinyNumber());
     }
 }

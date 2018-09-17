@@ -3,15 +3,11 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.*;
 
 public class InputReader {
-
-    // readFromFile(builder, destinyNumber);
 
     public Person readPersonInformation() {
         Scanner scanner = new Scanner(System.in);
@@ -19,74 +15,6 @@ public class InputReader {
         String name = scanner.nextLine();
         LocalDate birthday = readDateOfBirthday(scanner);
         return new Person(name, birthday);
-    }
-
-    static int readDayFromInput(Scanner scanner) {
-        int day = 0;
-        boolean condition = false;
-        do {
-            System.out.println(" Please, enter day of you date birthday: ");
-            if (scanner.hasNextInt()) {
-                day = scanner.nextInt();
-            } else {
-                System.out.println("Enter correct birth day number");
-                scanner.next();
-                continue;
-            }
-            if ((day <= 0) || (day > 31)) {
-                System.out.println("The number is wrong. Please, enter number from 1 to 31 ");
-            } else {
-                condition = true;
-            }
-        } while (!condition);
-        return day;
-    }
-
-    static int readMonthFromInput(Scanner scanner) {
-        int month = 0;
-        boolean condition = false;
-        do {
-            System.out.println(" Please, enter number of month of you date birthday:");
-            if (scanner.hasNextInt()) {
-                month = scanner.nextInt();
-            } else {
-                System.out.println("Enter correct number of month of you birthday");
-                scanner.next();
-                continue;
-            }
-            if ((month < 1) || (month > 12)) {
-                System.out.println("The number is wrong. Please, enter number from 1 to 12 ");
-            } else {
-                condition = true;
-            }
-        }
-        while (!condition);
-        return month;
-    }
-
-
-    static int readYearFromInput(Scanner scanner) {
-        int year = 0;
-        boolean condition = false;
-        do {
-            System.out.println(" Please, enter year of you birthday: ");
-            if (scanner.hasNextInt()) {
-                year = scanner.nextInt();
-            } else {
-                System.out.println("Enter correct year of you birthday");
-                scanner.next();
-                continue;
-            }
-            if ((year < 1800) || (year > 2018)) {
-                System.out.println(" Number is wrong. Please enter number from 1800 to 2018 ");
-            } else {
-                condition = true;
-
-            }
-        } while (!condition);
-        return year;
-
-
     }
 
     static StringBuilder readFromFile(StringBuilder builder, int destinyNumber) throws IOException {
@@ -118,7 +46,7 @@ public class InputReader {
         LocalDate birthday = null;
         boolean condition = true;
         do {
-            System.out.println("Please enter date of you birthday in those format: day-month-year.  For example: 01-01-1999 ");
+            System.out.println("Please enter date of you birthday in those format: year-month-day.  For example: 1999-12-17 ");
             if (scanner.hasNextLine()) {
                 dayInput = scanner.nextLine();
             } else {
@@ -151,10 +79,6 @@ public class InputReader {
         return false;
     }
 
-    /*private Person createAnotherPerson() {
-        System.out.println("What is name of you partner? ");
-        String name2 = scanner.nextLine();
 
-    }*/
 
 }
