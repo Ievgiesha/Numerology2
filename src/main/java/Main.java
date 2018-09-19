@@ -8,7 +8,7 @@ public class Main {
         DescriptionReader descriptionReader = new DescriptionReader();
         descriptionReader.readDestinyDescriptionFromFile(p.getDestinyNumber());
         if (inputReader.wouldYouLikeToKnownCompatibility()) {
-            System.out.println(p.tellYourDestinyStory(p.getDestinyNumber()));
+            System.out.println(p.tellYourDestinyStory());
         }
     }
 }

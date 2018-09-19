@@ -12,9 +12,6 @@ public class InputReader {
         return new Person(name, birthday);
     }
 
-
-
-
     private LocalDate readDateOfBirthday(Scanner scanner) {
         String dayInput;
         LocalDate birthday = null;
@@ -49,9 +46,10 @@ public class InputReader {
         }
         return false;
     }
-    public void readInformationAboutPartner(){
+
+    public void readInformationAboutPartner() {
         System.out.println("Please, enter date of you partner ");
         Person partner = readPersonInformation();
-        System.out.println("Destiny number you partner are: "+partner.getDestinyNumber()+" Now you can to know about future...");
+        System.out.println("Destiny number you partner are: " + partner.getDestinyNumber() + " Now you can to know about future...");
     }
 }
