@@ -1,4 +1,5 @@
 import lombok.Data;
+
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Stream;
@@ -8,11 +9,13 @@ public class Person {
     private String name;
     private int destinyNumber;
     private LocalDate birthday;
+    private DescriptionReader descriptionReader;
 
     public Person(String name, LocalDate birthday) {
         this.name = name;
         this.birthday = birthday;
         this.destinyNumber = whatDestinyNumber(birthday);
+        this.descriptionReader = new DescriptionReader();
     }
 
 
@@ -25,13 +28,18 @@ public class Person {
         if (sum > 9) {
             sum = sum % 10 + sum / 10;
         }
-        System.out.println("You number of destiny: " + sum);
+        System.out.println("Number of destiny is: " + sum);
         return sum;
     }
 
-    public String compatibleWith(Person anotherPerson) {
-        //this.destinyNumber
-        //anotherPerson.destinyNumber
-        return "";
+    public String tellYourDestinyStory() {
+        InputReader inputReader = new InputReader();
+        inputReader.readInformationAboutPartner();
+        try {
+            return descriptionReader.readCompatibilityFromFile(this.destinyNumber);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }return "";
     }
 }
+
