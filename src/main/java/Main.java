@@ -9,7 +9,11 @@ public class Main {
         descriptionReader.readDestinyDescriptionFromFile(p.getDestinyNumber());
         if (inputReader.wouldYouLikeToKnownCompatibility()) {
             System.out.println(p.tellYourDestinyStory());
-        }
-    }
-}
+        } else descriptionReader.readDestinyDescriptionFromFile(p.getDestinyNumber());
+        if (inputReader.doYouWantToKnowValueName()) {
+           p.describeNameLetters();
+        }else descriptionReader.readDestinyDescriptionFromFile(p.getDestinyNumber());
 
+    }
+
+}

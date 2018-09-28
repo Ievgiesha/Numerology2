@@ -40,5 +40,15 @@ public class Person {
             e.printStackTrace();
         }return "";
     }
+   public String describeNameLetters(){
+        try {
+            return descriptionReader.findLettersFromName(this.name);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 }
+
 

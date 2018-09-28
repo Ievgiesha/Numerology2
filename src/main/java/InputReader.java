@@ -52,4 +52,25 @@ public class InputReader {
         Person partner = readPersonInformation();
         System.out.println("Destiny number you partner are: " + partner.getDestinyNumber() + " Now you can to know about future...");
     }
+
+    public boolean doYouWantToKnowValueName() {
+        System.out.println("When decoding your own name, it's important to realize that in Numerology, each letter in your name has a " +
+                "corresponding number, and that the placement of each letter determines the kind of influence that letter (and its " +
+                "numerological meaning) has on you. To simplify things, we will refer to letters and their numerological meaning rather " +
+                "than discuss the precise numbers they translate into.");
+        System.out.println(" ");
+        System.out.println("Do you want to know more about LETTERS OF YOU NAME?    If you would like to continue, press 1, if you want " +
+                "to start  again, press 0.  ");
+        Scanner scanner = new Scanner(System.in);
+        String answer = scanner.nextLine();
+        if (answer.equals("1")) {
+            return true;
+        }
+        return false;
+    }
+
 }
+
+
+
+
