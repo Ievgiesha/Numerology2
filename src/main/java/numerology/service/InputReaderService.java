@@ -1,16 +1,20 @@
+package numerology.service;
+
+import numerology.entities.Person;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.*;
 
-public class InputReader {
+public class InputReaderService {
 
-    public Person readPersonInformation() {
+   /* public Person readPersonInformation() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please, enter  name ");
         String name = scanner.nextLine();
         LocalDate birthday = readDateOfBirthday(scanner);
         return new Person(name, birthday);
-    }
+    }*/
 
     private LocalDate readDateOfBirthday(Scanner scanner) {
         String dayInput;
@@ -47,11 +51,11 @@ public class InputReader {
         return false;
     }
 
-    public void readInformationAboutPartner() {
+   /* public void readInformationAboutPartner() {
         System.out.println("Please, enter date of you partner ");
         Person partner = readPersonInformation();
         System.out.println("Destiny number you partner are: " + partner.getDestinyNumber() + " Now you can to know about future...");
-    }
+    }*/
 
     public boolean doYouWantToKnowValueName() {
         System.out.println("When decoding your own name, it's important to realize that in Numerology, each letter in your name has a " +

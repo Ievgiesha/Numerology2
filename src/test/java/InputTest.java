@@ -28,7 +28,7 @@ public class InputTest {
         InputStream testInput = new ByteArrayInputStream(data.getBytes("UTF-8"));
         Scanner sc = new Scanner(testInput);
         //when
-        int result = Main.readDayFromInput(sc);
+        int result = Numerology.Main.readDayFromInput(sc);
         //then
         Assert.assertEquals(correctDay, result);
     }
@@ -40,7 +40,7 @@ public class InputTest {
         InputStream testInput = new ByteArrayInputStream(data.getBytes("UTF-8"));
         Scanner sc = new Scanner(testInput);
         //when
-        int result = Main.readDayFromInput(sc);
+        int result = Numerology.Main.readDayFromInput(sc);
         //then
         Assert.assertEquals(correctDay, result);
     }
@@ -51,7 +51,7 @@ public class InputTest {
         InputStream testInput = new ByteArrayInputStream(data.getBytes("UTF-8"));
         Scanner sc = new Scanner(testInput);
         //when
-        int result = Main.readMonthFromInput(sc);
+        int result = Numerology.Main.readMonthFromInput(sc);
         //then
         Assert.assertEquals(correctMonth, result);
     }
@@ -62,7 +62,7 @@ public class InputTest {
         InputStream testInput = new ByteArrayInputStream(data.getBytes("UTF-8"));
         Scanner sc = new Scanner(testInput);
         //when
-        int result = Main.readMonthFromInput(sc);
+        int result = Numerology.Main.readMonthFromInput(sc);
         //then
         Assert.assertEquals(correctMonth, result);
     }
@@ -73,7 +73,7 @@ public class InputTest {
         InputStream testInput = new ByteArrayInputStream(data.getBytes("UTF-8"));
         Scanner sc = new Scanner(testInput);
         //when
-        int result = Main.readYearFromInput(sc);
+        int result = Numerology.Main.readYearFromInput(sc);
         //then
         Assert.assertEquals(correctYear, result);
     }
@@ -84,7 +84,7 @@ public class InputTest {
         InputStream testInput = new ByteArrayInputStream(data.getBytes("UTF-8"));
         Scanner sc = new Scanner(testInput);
         //when
-        int result = Main.readYearFromInput(sc);
+        int result = Numerology.Main.readYearFromInput(sc);
         //then
         Assert.assertEquals(correctYear, result);
     }

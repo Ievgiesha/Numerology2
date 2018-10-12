@@ -1,11 +1,44 @@
+package numerology.service;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
+@Setter
+@Getter
+@AllArgsConstructor
+@Service
+public class HoroscopeService {
 
-public class DescriptionReader {
+    public String destinyNumberForBirthday(LocalDate localDate) {
+        int destinyNumber = whatDestinyNumber(localDate);
+        return readDestinyDescriptionFromFile(destinyNumber);
+    }
+
+    public String chineseZodiacForBirthday(LocalDate localDate) {
+
+        return "";
+    }
+
+    public static void main(String[] args) {
+        HoroscopeService horoscopeService =new HoroscopeService();
+        System.out.println(horoscopeService.destinyNumberForBirthday(LocalDate.parse("1997-02-02")));
+       /* PersonService personService = new PersonService();
+        InputReaderService inputReaderService = new InputReaderService();
+        Person p = inputReaderService.readPersonInformation();
+        DescriptionReader descriptionReader = new DescriptionReader();*/
+        //descriptionReader.readDestinyDescriptionFromFile(p.getDestinyNumber());
+    }
     String readDestinyDescriptionFromFile(int destinyNumber) {
         StringBuilder builder = new StringBuilder();
         List<String> lines = new ArrayList<>();
@@ -30,8 +63,20 @@ public class DescriptionReader {
         return builder.toString();
     }
 
+    private int whatDestinyNumber(LocalDate birthday) {
+        int temp = Stream.of(birthday.toString().replaceAll("-", "0"))
+                .flatMap(str -> Arrays.stream(str.split("")))
+                .mapToInt(str -> Integer.parseInt(str)).
+                        sum();
+        int sum = temp % 10 + temp / 10;
+        if (sum > 9) {
+            sum = sum % 10 + sum / 10;
+        }
+        System.out.println("Number of destiny is: " + sum);
+        return sum;
+    }
 
-    String readCompatibilityFromFile(int destinyNumber) {
+    public  String readCompatibilityFromFile(int destinyNumber) {
         StringBuilder builder = new StringBuilder();
         List<String> lines = new ArrayList<>();
         try {
@@ -55,25 +100,24 @@ public class DescriptionReader {
         return builder.toString();
     }
 
-    String findLettersFromName(String name) {
+   public String findLettersFromName(String name) {
         StringBuffer stringBuffer = new StringBuffer();
-        DescriptionReader descriptionReader = new DescriptionReader();
         String firstLetter = String.valueOf(name.charAt(0)).toUpperCase();
         String lastLetter = String.valueOf(name.charAt(name.length() - 1)).toUpperCase();
         String nextFirstLetter;
         String nextLastLetter;
         if (!(firstLetter.equals("Z"))) {
-            nextFirstLetter = descriptionReader.findNextLetter(firstLetter);
+            nextFirstLetter = findNextLetter(firstLetter);
         } else {
             nextFirstLetter = "Z";
         }
         if (!(lastLetter.equals("Z"))) {
-            nextLastLetter = descriptionReader.findNextLetter(lastLetter);
+            nextLastLetter = findNextLetter(lastLetter);
         } else {
             nextLastLetter = "Z";
         }
-        stringBuffer.append(descriptionReader.readNameLettersFromFile(firstLetter, nextFirstLetter));
-        stringBuffer.append(descriptionReader.readNameLettersFromFile(lastLetter, nextLastLetter));
+        stringBuffer.append(readNameLettersFromFile(firstLetter, nextFirstLetter));
+        stringBuffer.append(readNameLettersFromFile(lastLetter, nextLastLetter));
         return stringBuffer.toString();
     }
 
@@ -116,4 +160,5 @@ public class DescriptionReader {
         //return "" + (char) (Character.getNumericValue(letter.charAt(0)) + 1);
         return nextLetter;
     }
+
 }
