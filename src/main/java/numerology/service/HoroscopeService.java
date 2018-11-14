@@ -43,7 +43,7 @@ public class HoroscopeService {
         StringBuilder builder = new StringBuilder();
         List<String> lines = new ArrayList<>();
         try {
-            lines = Files.readAllLines(Paths.get("src/main/resources/Text1"), StandardCharsets.UTF_8);
+            lines = Files.readAllLines(Paths.get("src/main/resources/DiscrabeDestinyNumber"), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -80,7 +80,7 @@ public class HoroscopeService {
         StringBuilder builder = new StringBuilder();
         List<String> lines = new ArrayList<>();
         try {
-            lines = Files.readAllLines(Paths.get("src/main/resources/Text2"), StandardCharsets.UTF_8);
+            lines = Files.readAllLines(Paths.get("src/main/resources/Compatibility"), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }

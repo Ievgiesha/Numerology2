@@ -1,5 +1,4 @@
 package numerology.service;
-
 import numerology.entities.Person;
 import numerology.repository.PersonRepository;
 import org.springframework.stereotype.Service;
@@ -62,15 +61,6 @@ public class PersonService {
         return descriptionReaderService.readCompatibilityFromFile(destinyNumber1);
     }
 
-    /*public String tellYourDestinyStory() {
-        InputReaderService inputReaderService = new InputReaderService();
-        inputReaderService.readInformationAboutPartner();
-        try {
-            return horoscopeService.readCompatibilityFromFile(this.destinyNumber);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }return "";
-    }*/
     public String describeNameLetters(Long id){
         Person p = getById(id);
         String name = p.getName();

@@ -1,6 +1,7 @@
 package numerology.controllers;
 
 import numerology.entities.Person;
+import numerology.service.ZodiacService;
 import numerology.service.PersonService;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,11 +10,12 @@ import org.springframework.web.bind.annotation.*;
 public class PersonController {
 
     private final PersonService personService;
+    private final ZodiacService zodiacService;
 
-    public PersonController(PersonService personService) {
+    public PersonController(PersonService personService, ZodiacService zodiacService) {
         this.personService = personService;
+        this.zodiacService = zodiacService;
     }
-
     @PostMapping
     public Person addPerson(@RequestBody Person person) {
         return personService.save(person);
@@ -37,4 +39,8 @@ public class PersonController {
     public String descriptionForLetter(@PathVariable Long id){
         return personService.describeNameLetters(id);
      }
+    @GetMapping("/{id}/chinese-sign")
+     public String chineseSign(@PathVariable Long id){
+        return zodiacService.chineseSignForPersonId(id);
+    }
 }

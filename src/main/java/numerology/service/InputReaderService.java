@@ -8,7 +8,7 @@ import java.util.*;
 
 public class InputReaderService {
 
-   /* public Person readPersonInformation() {
+  /* public Person readPersonInformation() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please, enter  name ");
         String name = scanner.nextLine();

@@ -1,20 +1,20 @@
 package numerology.service;
-
+import numerology.ZodiacEnum;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
 @Service
 public class DescriptionReaderService {
     String readDestinyDescriptionFromFile(int destinyNumber) {
         StringBuilder builder = new StringBuilder();
         List<String> lines = new ArrayList<>();
         try {
-            lines = Files.readAllLines(Paths.get("src/main/resources/Text1"), StandardCharsets.UTF_8);
+            lines = Files.readAllLines(Paths.get("src/main/resources/DiscrabeDestinyNumber"), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -39,7 +39,7 @@ public class DescriptionReaderService {
         StringBuilder builder = new StringBuilder();
         List<String> lines = new ArrayList<>();
         try {
-            lines = Files.readAllLines(Paths.get("src/main/resources/Text2"), StandardCharsets.UTF_8);
+            lines = Files.readAllLines(Paths.get("src/main/resources/Compatibility"), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -120,4 +120,17 @@ public class DescriptionReaderService {
         //return "" + (char) (Character.getNumericValue(letter.charAt(0)) + 1);
         return nextLetter;
     }
+
+    String readZodiacSignFromFile(ZodiacEnum enumZodiac) {
+        StringBuilder builder = new StringBuilder();
+        String enumName = enumZodiac.name;
+
+        try {
+            builder.append(Files.readAllLines(Paths.get("src/main/resources/" + enumName),
+                    StandardCharsets.UTF_8));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(builder.toString());
+        return builder.toString();    }
 }

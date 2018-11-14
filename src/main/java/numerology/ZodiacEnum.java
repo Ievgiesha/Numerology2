@@ -1,28 +1,28 @@
 package numerology;
 
+
 public enum ZodiacEnum {
-    RAT("Rat"),
+   AQUARIUS("Aguarius"),
 
-    OX("Ox"),
+    ARIES("Aries"),
 
-    TIGER("Tiger"),
+    CANCER("Cancer"),
 
-    RABBIT("DRAGON"),
+    CAPRICOM("Capricom"),
 
-    SNAKE("Snake"),
+    GEMINI("Gemini"),
 
-    HORSE("Horse"),
+    LEO("Leo"),
 
-    SHEEP("Sheep"),
+    LIBRA("Libra"),
 
-    MONKEY("Monkey"),
+    PISCES("Pisces"),
 
-    ROOSTER("Roster"),
+    SAGITTARIUS("Sagittarius"),
 
-    DOG("Dog"),
+    SCORPIO("Scorpio"),
 
-    PIG("Pig");
-
+    TAURUS("Taurus");
 
     public String name;
 
