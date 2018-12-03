@@ -1,6 +1,8 @@
 package numerology.service;
+
 import numerology.ZodiacEnum;
 import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -14,7 +16,7 @@ public class DescriptionReaderService {
         StringBuilder builder = new StringBuilder();
         List<String> lines = new ArrayList<>();
         try {
-            lines = Files.readAllLines(Paths.get("src/main/resources/DiscrabeDestinyNumber"), StandardCharsets.UTF_8);
+            lines = Files.readAllLines(Paths.get("src/main/resources/DiscriptionDestinyNumber"), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,12 +71,12 @@ public class DescriptionReaderService {
         if (!(firstLetter.equals("Z"))) {
             nextFirstLetter = descriptionReaderService.findNextLetter(firstLetter);
         } else {
-            nextFirstLetter = "Z";
+            nextFirstLetter = "";
         }
         if (!(lastLetter.equals("Z"))) {
             nextLastLetter = descriptionReaderService.findNextLetter(lastLetter);
         } else {
-            nextLastLetter = "Z";
+            nextLastLetter = "";
         }
         stringBuffer.append(descriptionReaderService.readNameLettersFromFile(firstLetter, nextFirstLetter));
         stringBuffer.append(descriptionReaderService.readNameLettersFromFile(lastLetter, nextLastLetter));
@@ -82,7 +84,7 @@ public class DescriptionReaderService {
     }
 
     String readNameLettersFromFile(String nameLetter, String nextLetter) {
-        System.out.println("You name is " + nameLetter);
+        //System.out.println("You name is " + nameLetter);
         StringBuilder builder = new StringBuilder();
         List<String> lines = new ArrayList<>();
         try {
@@ -92,12 +94,16 @@ public class DescriptionReaderService {
         }
         boolean toRead = false;
         for (String line : lines) {
-            if (line.contains("The Meaning of \"" + nextLetter + "\" in Your Name")) {
+          /*  if (line.contains("The Meaning of \"" + nextLetter + "\" in Your Name")) {
                 toRead = false;
-            }
+            }*/
             if (line.contains("The Meaning of \"" + nameLetter + "\" in Your Name")) {
                 toRead = true;
             }
+            if (line.contains("The Meaning of \"" + nextLetter + "\" in Your Name")) {
+                toRead = false;
+            }
+
 
             if (toRead) {
                 builder.append(line);
@@ -108,16 +114,15 @@ public class DescriptionReaderService {
     }
 
 
-    public String findNextLetter(String letter) {
-        String[] alfabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J`", "K", "L", "M", "N", "O", "P", "Q", "R",
+     String findNextLetter(String letter) {
+        String[] alfabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
                 "S", "T", "U", "V", "W", "X", "Y", "Z"};
-        String nextLetter = "";
+        String nextLetter = null;
         for (int i = 0; i < alfabet.length - 1; i++) {
             if (alfabet[i].equals(letter)) {
-                nextLetter = alfabet[i + 1];
+                nextLetter = alfabet[i+1];
             }
         }
-        //return "" + (char) (Character.getNumericValue(letter.charAt(0)) + 1);
         return nextLetter;
     }
 
@@ -132,5 +137,6 @@ public class DescriptionReaderService {
             e.printStackTrace();
         }
         System.out.println(builder.toString());
-        return builder.toString();    }
+        return builder.toString();
+    }
 }

@@ -2,7 +2,7 @@ package numerology;
 
 
 public enum ZodiacEnum {
-   AQUARIUS("Aguarius"),
+   AQUARIUS("Aquarius"),
 
     ARIES("Aries"),
 

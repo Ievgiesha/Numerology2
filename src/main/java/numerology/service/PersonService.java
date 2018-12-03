@@ -10,12 +10,10 @@ import java.util.stream.Stream;
 public class PersonService {
     private final PersonRepository personRepository;
     private final DescriptionReaderService descriptionReaderService;
-    private final HoroscopeService horoscopeService;
 
-    public PersonService(PersonRepository personRepository, DescriptionReaderService descriptionReaderService, HoroscopeService horoscopeService) {
+    public PersonService(PersonRepository personRepository, DescriptionReaderService descriptionReaderService) {
         this.personRepository = personRepository;
         this.descriptionReaderService = descriptionReaderService;
-        this.horoscopeService = horoscopeService;
     }
 
 
@@ -25,7 +23,7 @@ public class PersonService {
     }
 
     public Person getById(Long id) {
-        return personRepository.findById(id).orElseGet(null);
+        return personRepository.findById(id).get();
     }
 
     private int whatDestinyNumber(LocalDate birthday) {
@@ -65,7 +63,7 @@ public class PersonService {
         Person p = getById(id);
         String name = p.getName();
         try {
-            return horoscopeService.findLettersFromName(name);
+            return descriptionReaderService.findLettersFromName(name);
         }catch(Exception e){
             e.printStackTrace();
         }
